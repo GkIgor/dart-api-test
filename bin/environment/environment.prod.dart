@@ -1,0 +1,30 @@
+import 'dart:io';
+
+class Environment {
+  static int port =
+      int.tryParse(Platform.environment['port'] ?? '8080') ?? 8080;
+
+  static int databasePort =
+      int.tryParse(Platform.environment['port'] ?? '8080') ?? 8080;
+
+  static String databaseHost =
+      Platform.environment['databaseHost'] ?? "localhost";
+
+  static String databaseName =
+      Platform.environment['databaseName'] ?? "dart-database";
+
+  static String databaseUsername =
+      Platform.environment['databaseUsername'] ?? "postgres";
+
+  static String databasePassword =
+      Platform.environment['databasePassword'] ?? "postgres";
+
+  static int connectTimeout =
+      int.tryParse(Platform.environment['connectTimeout'] ?? '15') ?? 15;
+
+  static int queryTimeout =
+      int.tryParse(Platform.environment['queryTimeout'] ?? '30') ?? 30;
+
+  static int maxConnectionCount =
+      int.tryParse(Platform.environment['maxConnectionCount'] ?? '12') ?? 12;
+}
