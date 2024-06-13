@@ -32,8 +32,12 @@ class UsersService {
     return Database.pool.withConnection(
       (conn) async {
         final query = await conn.execute('SELECT * FROM $table');
-        print(query);
-        return UsersService.toJson(query.first.first as User);
+        print('\n\n\n');
+        print(query.first.toColumnMap());
+        print('\n\n\n');
+
+        User user = User.fromMap(query.first.toColumnMap());
+        return UsersService.toJson(user);
       },
     );
   }

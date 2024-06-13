@@ -3,9 +3,12 @@ import 'package:postgres/postgres.dart';
 import '../../environment/environment.prod.dart';
 
 class Database {
-  static final Pool pool = Pool.withEndpoints([
-    _endpoint,
-  ], settings: _settings);
+  static final Pool pool = Pool.withEndpoints(
+    [
+      _endpoint,
+    ],
+    settings: _settings,
+  );
 }
 
 PoolSettings _settings = PoolSettings(
