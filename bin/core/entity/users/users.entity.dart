@@ -1,8 +1,8 @@
 // @Entity
 class User {
-  final int _id;
+  final int? _id;
   final String _name;
-  final DateTime _date;
+  final dynamic _date;
   final int _age;
   final String _city;
   final String _state;
@@ -10,9 +10,9 @@ class User {
   final String _district;
 
   User({
-    required int id,
+    int? id,
     required String name,
-    required DateTime date,
+    required dynamic date,
     required int age,
     required String city,
     required String state,
@@ -29,20 +29,29 @@ class User {
 
   User.fromMap(Map<String, dynamic> user)
       : _id = user['id'],
-        _name = user['name'],
-        _date = user['date'],
-        _age = user['age'],
-        _city = user['city'],
-        _state = user['state'],
-        _street = user['street'],
-        _district = user['district'];
+        _name = user['nome'] ?? user['name'],
+        _date = user['data_nascimento'] ?? user['date'],
+        _age = user['idade'] ?? user['age'],
+        _city = user['cidade'] ?? user['city'],
+        _state = user['estado'] ?? user['state'],
+        _street = user['rua'] ?? user['street'],
+        _district = user['bairro'] ?? user['district'];
 
-  int get id => _id;
+  int? get id => _id;
   String get name => _name;
-  DateTime get date => _date;
+  String get date => _date;
   int get age => _age;
   String get city => _city;
   String get state => _state;
   String get street => _street;
   String get district => _district;
+
+  @override
+  String toString() {
+    return 'id: $id, name: $name, date: $date, age: $age, city: $city, state: $state, street: $street, district: $district';
+  }
+
+  String toStringForDb() {
+    return ' \'$name\', \'$date\', \'$age\', \'$city\', \'$state\', \'$street\', \'$district\'';
+  }
 }

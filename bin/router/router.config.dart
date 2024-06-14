@@ -8,4 +8,5 @@ final router = Router()
   ..get('/', rootHandler)
   ..get('/echo/<message>', echoHandler)
   ..get('/users', getUsers)
-  ..get('/users/<id>', getUsers);
+  ..get('/users/<id>', getUsersById)
+  ..post('/users', addUser);
