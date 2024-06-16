@@ -57,7 +57,9 @@ Future<Response> getUsersById(Request request) async {
         'Content-Type': 'application/json',
       },
     );
-  } catch (e) {
+  } catch (e, s) {
+    print('\n\n$e');
+    print('\n\n$s');
     final String? id = request.params['id'];
     Map<String, String> responseMessageError = {
       'message': '$id no a valid id',

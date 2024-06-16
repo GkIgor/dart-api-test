@@ -36,13 +36,13 @@ class UsersService {
     );
   }
 
-  static Future<User> getUserById(int id) async {
+  static Future<Map<String, dynamic>> getUserById(int id) async {
     return Database.pool.withConnection(
       (conn) async {
         final query =
-            await conn.execute('SELECT * FROM users WHERE user.id = $id');
+            await conn.execute('SELECT * FROM users WHERE users.id = $id');
 
-        return fromJson(query.first.toColumnMap());
+        return query.first.toColumnMap();
       },
     );
   }
